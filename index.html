@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lauren Liao | Portfolio</title>
+  <meta
+    name="description"
+    content="Lauren Liao — Quant finance, data science, and systems portfolio."
+  />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --panel-2: #1f2937;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --accent: #67e8f9;
+      --border: #334155;
+      --white: #ffffff;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+      --radius: 18px;
+      --maxw: 1080px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: linear-gradient(180deg, #020617 0%, #0f172a 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      opacity: 0.9;
+    }
+
+    .container {
+      width: min(var(--maxw), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background: rgba(2, 6, 23, 0.8);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      gap: 16px;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--white);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      padding: 72px 0 40px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 0.9fr;
+      gap: 24px;
+    }
+
+    .card {
+      background: rgba(17, 24, 39, 0.9);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-main,
+    .hero-side,
+    .section-card {
+      padding: 28px;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      font-size: 0.78rem;
+      margin-bottom: 10px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin-top: 0;
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      margin-bottom: 14px;
+    }
+
+    h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      margin-bottom: 14px;
+    }
+
+    p {
+      margin: 0 0 14px;
+      color: var(--text);
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 11px 16px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--panel-2);
+      color: var(--white);
+      font-weight: 600;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      border-color: var(--accent);
+    }
+
+    .button.primary {
+      background: linear-gradient(135deg, #155e75, #0f766e);
+      border-color: transparent;
+    }
+
+    .snapshot-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .snapshot-item strong {
+      display: block;
+      color: var(--white);
+      margin-bottom: 4px;
+      font-size: 0.95rem;
+    }
+
+    section {
+      padding: 24px 0;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .project-card {
+      padding: 24px;
+    }
+
+    .project-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 14px 0 18px;
+    }
+
+    .tag {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-weight: 600;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 18px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .skills-grid h3 {
+      margin-bottom: 12px;
+      font-size: 1rem;
+    }
+
+    .experience-item {
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: rgba(2, 6, 23, 0.35);
+      margin-bottom: 14px;
+    }
+
+    .experience-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .footer {
+      padding: 28px 0 50px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .project-grid,
+      .two-col,
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 42px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-main,
+      .hero-side,
+      .section-card,
+      .project-card {
+        padding: 22px;
+      }
+
+      .section-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">Lauren Liao</div>
+      <div class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="card hero-main">
+        <div class="eyebrow">Quant Finance · Data Science · Risk Management</div>
+        <h1>Lauren Liao</h1>
+        <p>
+          MSCF candidate at Carnegie Mellon University and former Fixed Income Quant at TD Securities.
+          I build quantitative, data-driven, and systems-oriented projects across financial modeling,
+          machine learning, and engineering.
+        </p>
+        <p class="muted">
+          Interested in quant research, derivatives structuring, systematic trading, risk analytics, and data science roles at the intersection of markets, data science and computation.
+        </p>
+
+        <div class="button-row">
+          <a class="button primary" href="#resume-versions">View Resumes</a>
+          <a class="button" href="https://github.com/lyz1103" target="_blank">GitHub</a>
+          <a class="button" href="https://www.linkedin.com/in/laurenliao-yuzhou" target="_blank">LinkedIn</a>
+          <a class="button" href="mailto:laurenlyz1103@gmail.com">Email</a>
+        </div>
+      </div>
+
+      <aside class="card hero-side">
+        <h2>Quick Snapshot</h2>
+        <div class="snapshot-list">
+          <div class="snapshot-item">
+            <strong>Current Program</strong>
+            Master of Science in Computational Finance, Carnegie Mellon University
+          </div>
+          <div class="snapshot-item">
+            <strong>Background</strong>
+            Fixed income quant strategy, cross-asset analytics, machine learning in finance
+          </div>
+          <div class="snapshot-item">
+            <strong>Focus Areas</strong>
+            Quant research, structuring, ML, market analytics, systems
+          </div>
+          <div class="snapshot-item">
+            <strong>Technical Stack</strong>
+            Python, C++, SQL, Linux, machine learning
+          </div>
+          <div class="snapshot-item">
+            <strong>Currently Seeking</strong>
+            Quant, risk, and data science full-time opportunities
+          </div>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <section id="resume-versions">
+      <div class="container">
+        <div class="card section-card">
+          <div class="eyebrow">Resume Versions</div>
+          <h2>Choose the version most relevant to the role</h2>
+          <p class="muted">
+            I maintain tailored resume versions across quantitative finance, risk, and data science to highlight different aspects of my experience. Together, they reflect the breadth of my skills and the range of problems I enjoy working on.
+          <div class="button-row">
+            <a class="button" href="Lauren_Liao_Resume_Quant.pdf" target="_blank">Quant Resume</a>
+            <a class="button" href="Lauren_Liao_Resume_Risk.pdf" target="_blank">Risk Resume</a>
+            <a class="button" href="Lauren_Liao_Resume_DataScience.pdf" target="_blank">Data Science Resume</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="projects">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">Featured Work</div>
+            <h2>Projects</h2>
+          </div>
+          <a href="https://github.com/lyz1103?tab=repositories" target="_blank">View all repositories →</a>
+        </div>
+
+        <div class="project-grid">
+          <article class="card project-card">
+            <h3>Stock Correlation Networks & Systemic Risk</h3>
+            <p>
+              Graph-based analyzer using minimum spanning trees and tree-DP optimization to study market structure,
+              systemic hubs, and diversified stock selection.
+            </p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Pandas</span>
+              <span class="tag">NumPy</span>
+              <span class="tag">NetworkX</span>
+              <span class="tag">yfinance</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/lyz1103/StockCorrelationNetwork" target="_blank">GitHub</a>
+              <a href="projects/mst-risk.html">Project page</a>
+            </div>
+          </article>
+
+          <article class="card project-card">
+            <h3>Fuzzy Shadowed SVM for Bankruptcy Prediction</h3>
+            <p>
+              Replication and extension of a fuzzy-membership SVM framework for bankruptcy classification with
+              interpretable weighting schemes and evaluation metrics.
+            </p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">scikit-learn</span>
+              <span class="tag">Pandas</span>
+              <span class="tag">Matplotlib</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/yourusername/fuzzy-svm-bankruptcy" target="_blank">GitHub</a>
+              <a href="projects/fuzzy-svm.html">Project page</a>
+            </div>
+          </article>
+
+          <article class="card project-card">
+            <h3>Multithreaded Web / File Server</h3>
+            <p>
+              Systems project focused on concurrency, thread pools, synchronization, and performance trade-offs in a
+              high-throughput client/server architecture.
+            </p>
+            <div class="tags">
+              <span class="tag">C</span>
+              <span class="tag">POSIX Threads</span>
+              <span class="tag">Sockets</span>
+              <span class="tag">Linux</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/yourusername/os-server" target="_blank">GitHub</a>
+            </div>
+          </article>
+
+          <article class="card project-card">
+            <h3>Industrial Monitoring with OPC-UA</h3>
+            <p>
+              Industrial automation prototype integrating PLC data pipelines, OPC-UA, Node.js services, and
+              observability dashboards for real-time monitoring.
+            </p>
+            <div class="tags">
+              <span class="tag">Node.js</span>
+              <span class="tag">OPC-UA</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Splunk</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/yourusername/opcua-monitoring" target="_blank">GitHub</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container two-col">
+        <div class="card section-card">
+          <div class="eyebrow">About</div>
+          <h2>What I work on</h2>
+          <p>
+            My interests sit at the intersection of quantitative finance, machine learning, and software engineering.
+            I enjoy translating complex ideas into practical tools — from pricing and risk analytics to predictive
+            models, data workflows, and performant systems code.
+          </p>
+          <p class="muted">
+            This site is designed to give a concise overview of my background, selected projects, and technical toolkit.
+            For implementation details, code, and experiments, please visit the linked GitHub repositories.
+          </p>
+        </div>
+
+        <div class="card section-card">
+          <div class="eyebrow">Toolkit</div>
+          <h2>Skills</h2>
+          <div class="skills-grid">
+            <div>
+              <h3>Quant</h3>
+              <div class="tags">
+                <span class="tag">Derivatives</span>
+                <span class="tag">Fixed Income</span>
+                <span class="tag">Risk Management</span>
+                <span class="tag">Time Series</span>
+                <span class="tag">Portfolio Analytics</span>
+              </div>
+            </div>
+            <div>
+              <h3>Programming</h3>
+              <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">C++</span>
+                <span class="tag">C</span>
+                <span class="tag">SQL</span>
+              </div>
+            </div>
+            <div>
+              <h3>Tools</h3>
+              <div class="tags">
+                <span class="tag">Pandas</span>
+                <span class="tag">scikit-learn</span>
+                <span class="tag">statsmodels</span>
+                <span class="tag">Git</span>
+                <span class="tag">Linux</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="card section-card">
+          <div class="eyebrow">Selected Background</div>
+          <h2>Experience</h2>
+
+          <div class="experience-item">
+            <div class="experience-head">
+              <strong>TD Securities — Fixed Income Quant Strategist</strong>
+              <span class="muted">Toronto</span>
+            </div>
+            <p class="muted">
+              Built analytics and tooling for rates and cross-gamma risk, supporting trading, hedging, and desk
+              decision-making across global markets workflows.
+            </p>
+          </div>
+
+          <div class="experience-item">
+            <div class="experience-head">
+              <strong>Carnegie Mellon University — MSCF</strong>
+              <span class="muted">Pittsburgh</span>
+            </div>
+            <p class="muted">
+              Coursework and projects spanning derivatives, machine learning, databases, operating systems, and
+              computational methods for finance.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="card section-card">
+          <div class="eyebrow">Contact</div>
+          <h2>Let’s connect</h2>
+          <p>
+            I’m always happy to connect about quant finance, data science, software engineering, and research-driven
+            opportunities.
+          </p>
+          <div class="button-row">
+            <a class="button" href="https://www.linkedin.com/in/laurenliao-yuzhou" target="_blank">LinkedIn</a>
+            <a class="button" href="mailto:laurenlyz1103@gmail.com">Email</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© 2026 Lauren Liao. Built with plain HTML and CSS for easy GitHub Pages deployment.</div>
+  </footer>
+</body>
+</html>
